@@ -1,0 +1,340 @@
+Create a fully functional, modern, elegant poetry portfolio website with a backend.
+Follow ALL the instructions below carefully and generate the complete project with all files.”
+
+
+---
+
+🎨 1. Overall Style & Design Requirements
+
+Create a modern, minimal, elegant poetry website, inspired by:
+
+Clean serif/mono typography
+
+Soft grid layout
+
+Warm neutral colors
+
+Smooth scroll animations
+
+Subtle parallax
+
+Glassmorphism for cards
+
+Idle cursor glow effect
+
+Fade-in transitions on poems
+
+Mobile-first responsive design
+
+
+Think “literary magazine meets premium portfolio.”
+
+Pages needed:
+
+1. Home — hero + featured poems + categories
+
+
+2. Poems Archive — list of all poems
+
+
+3. Single Poem Page — full poem + like button + reviews
+
+
+4. About Me
+
+
+5. Contact
+
+
+6. Admin Panel (moderate reviews)
+
+
+
+
+---
+
+🧱 2. Tech Stack
+
+Use:
+
+HTML, CSS, JS (no frameworks unless necessary)
+
+Use modular JS (/js/*.js)
+
+Use Supabase as backend
+
+Use supabase-js v2 CDN
+
+Use Edge Functions for secure anonymous posting
+
+Use Supabase Auth for admin login
+
+Use UUID for poem IDs
+
+
+The final project must be easily hostable on:
+
+Replit
+
+Netlify
+
+Vercel
+
+GitHub Pages (with Netlify functions)
+
+
+
+---
+
+📦 3. Backend Requirements (Supabase)
+
+Include everything needed:
+
+Create the following tables:
+
+likes
+
+post_slug (text) PK
+
+count (int, default 0)
+
+updated_at (timestamptz)
+
+
+reviews
+
+id (uuid)
+
+post_slug (text)
+
+name (text)
+
+email (text nullable)
+
+rating (int)
+
+comment (text)
+
+created_at (timestamptz)
+
+
+RPC for atomic like increment
+
+Provide the SQL for:
+
+increment_like(post_slug)
+
+(Must be safe for concurrency.)
+
+
+---
+
+🔐 4. RLS Policies
+
+Generate:
+
+One dev mode (insecure)
+
+One production mode (secure)
+
+Auth required for admin panel
+
+Public read
+
+Anonymous write only through Edge Functions
+
+
+
+
+---
+
+⚙ 5. Edge Functions
+
+Generate two Edge Functions:
+
+1. submit-review
+
+Accept name, rating, comment, post_slug
+
+Rate-limit by IP
+
+Validate inputs
+
+Insert into reviews
+
+Return JSON
+
+
+2. increment-like
+
+Secure atomic like increments
+
+Must prevent multiple rapid likes from same IP
+
+Return updated like count
+
+
+Include complete code for both.
+
+
+---
+
+📲 6. Frontend Integration
+
+Implement client-side JS that handles:
+
+For Poem Pages
+
+Load poem from /data/poems.json
+
+Display poem title, date, poem body with line breaks
+
+Show "Like" button
+
+Display live like count (from Supabase)
+
+Fetch & render reviews (from Supabase)
+
+⭐ Star rating UI
+
+Submit review form → calls Edge Function
+
+Smooth transitions/animations
+
+Anti-spam UI (disable button after click, loading state)
+
+
+For All Pages
+
+Animated navbar
+
+Dark mode toggle + localStorage
+
+Footer with social links
+
+
+
+---
+
+🧑‍💻 7. Admin Panel
+
+Create /admin/index.html with:
+
+Login (Supabase Auth email/password)
+
+Table list of all reviews
+
+Ability to delete a review
+
+Ability to edit a review
+
+Ability to view per-poem stats
+
+Ability to manually adjust like counts
+
+Minimal dashboard UI
+
+
+
+---
+
+📄 8. Data Structure
+
+Create data/poems.json like:
+
+[
+  {
+    "slug": "sunset-letters",
+    "title": "Sunset Letters",
+    "date": "2024-10-12",
+    "category": "Love",
+    "poem": [
+      "The sky folds into its own warmth,",
+      "like a secret being whispered back to fire.",
+      "And your name—soft as dusk—",
+      "becomes the color everything wants to be."
+    ]
+  },
+  { ... }
+]
+
+
+---
+
+🖼 9. Additional Features
+
+Include:
+
+Smooth page transitions (opacity fade + slide)
+
+Scroll-triggered poem reveals
+
+Line-by-line fade animation on poem load
+
+Custom cursor highlight
+
+Floating “back to top” button
+
+SEO meta tags for all pages
+
+Social preview image generation
+
+
+
+---
+
+📂 10. Final Deliverables
+
+Generate a complete project with this structure:
+
+/index.html
+/poems.html
+/poem.html?id=...
+/about.html
+/contact.html
+/admin/index.html
+
+/css/style.css
+/css/dark.css
+
+/js/main.js
+/js/poems.js
+/js/poem.js
+/js/auth.js
+/js/admin.js
+
+/data/poems.json
+
+/netlify/functions (if using netlify)
+or
+/supabase/functions (for edge functions)
+
+
+---
+
+🧩 11. Behavior
+
+All poems load from JSON
+
+Likes & reviews stored in Supabase
+
+Reviews load instantly on page open
+
+Admin panel requires login
+
+Edge Functions handle anonymous posting safely
+
+Mobile-first responsive
+
+
+
+---
+
+🎯 Final instruction
+
+“Use all instructions above to create the complete poetry portfolio website.
+Include all files, fully working code, backend SQL, edge functions, and detailed setup instructions.
+Everything should run immediately after pasting into a Replit project.”
+
+
+--
